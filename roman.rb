@@ -26,13 +26,15 @@ class RomanConverter
   end
 
   def convert
-    case string[0]
+    case string[0] # check first character
     when *is_roman then convert_roman
     when is_arabic then convert_arabic
     else
       raise 'no conversion available'
     end
   end
+
+  private
 
   def is_roman
     # first character is in conversion table
@@ -43,7 +45,7 @@ class RomanConverter
     result = 0
     str = string.clone
     # find the first match at the start, and add the number to total
-    # sub out the match
+    # shorten the match
     # do again
     # break if string is empty
     loop do 
@@ -70,12 +72,13 @@ class RomanConverter
   end
 
   def convert_arabic
-    str = Integer(string).to_s.clone # in case it comes in the format 1_000
-    result = find_roman_and_shorten(str)
+    int = Integer(string) # in case it comes in the format 1_000
+    raise "#{int} is out of range" if int > 3999
+    result = build_roman(int.to_s)
     result
   end
 
-  def find_roman_and_shorten(str)
+  def build_roman(str)
     "#{thousands(str[0..-4])}#{hundreds(str[-3])}#{tens(str[-2])}#{ones(str[-1])}"
   end
 
@@ -84,32 +87,24 @@ class RomanConverter
   end
 
   def hundreds(numbers)
-    int = numbers.to_i
-    case int
-    when 9 then "CM"
-    when 5..8 then "D" + ("C" * (int - 5))
-    when 4 then "CD"
-    when 1..3 then "C" * int
-    end
+    assign_letter(numbers, one: "C", five: "D", ten: "M")
   end
 
   def tens(numbers)
-    int = numbers.to_i
-    case int
-    when 9 then "XC"
-    when 5..8 then "L" + ("X" * (int - 5))
-    when 4 then "XL"
-    when 1..3 then "X" * int
-    end
+    assign_letter(numbers, one: "X", five: "L", ten: "C")
   end
 
   def ones(numbers)
+    assign_letter(numbers, one: "I", five: "V", ten: "X")
+  end
+
+  def assign_letter(numbers, one:, five:, ten:)
     int = numbers.to_i
     case int
-    when 9 then "IX"
-    when 5..8 then "V" + ("I" * (int - 5))
-    when 4 then "IV"
-    when 1..3 then "I" * int
+    when 9 then one + ten
+    when 5..8 then five + (one * (int - 5))
+    when 4 then one + five
+    when 1..3 then one * int
     end
   end
 end

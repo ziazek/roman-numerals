@@ -6,7 +6,7 @@ Best of Ruby Quiz, Chapter 8
 
 Write a converter to and from Roman numerals.
 
-The script should be a standard Unix filter, reading from files specified on the command line or STDIN and writing to STDOUT. Each line of input will contain one integer (from 1 to 3,999*) expressed as an Arabic or Roman numeral. There should be one line of output for each line of input, containing the original number in the opposite format.
+The script should be a standard Unix filter, reading from files specified on the command line or STDIN and writing to STDOUT. Each line of input will contain one integer (from 1 to 3,999**) expressed as an Arabic or Roman numeral. There should be one line of output for each line of input, containing the original number in the opposite format.
 
 For example, given the following input:
 
@@ -28,13 +28,15 @@ XXXVIII
 MCMXCIX
 ```
 
-* *Roman numerals for 4,000 and up do not use plain ASCII characters.*
+** Roman numerals for 4,000 and up do not use plain ASCII characters.
 
 ## Requirements
 
 Ruby 2.2.2
 
 ## Notes
+
+- next up: DRY up the code.
 
 ## Usage
 
