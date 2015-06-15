@@ -43,6 +43,8 @@ run `bundle install`
 
 ## Understanding the Question
 
+Must separate ones, tens, hundreds, and thousands as separate items. That means that 99 is XCIX, 90 + 9, but never should be written as IC. Similarly, 999 cannot be IM and 1999 cannot be MIM.
+
 ## Results
 
 **Source:**
@@ -72,6 +74,10 @@ CCCLIX
 ```
 
 ## Review
+
+Use of Numeric's `#divmod` would allow for a much shorter solution. Also, using String's `#index` allows us to test whether a certain sequence of characters is at the start of the target.
+
+Currently, the `convert_roman` method doesn't use the CONVERSION_TABLE hash, so it could definitely be DRY-er.
 
 ## License
 

@@ -114,7 +114,7 @@ unless (ARGV.length == 1 && File.exist?(ARGV[0]))
   exit 
 end
 
-ARGF.each_line do |line|
+ARGF.each_line do |line| # can replace with $stdin.each for command line input
   conversion = RomanConverter.new(line.chomp)
   puts conversion.convert
 end
