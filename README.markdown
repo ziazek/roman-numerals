@@ -36,12 +36,10 @@ Ruby 2.2.2
 
 ## Notes
 
-- next up: DRY up the code.
-
 ## Usage
 
 run `bundle install`
-`$ ./roman.rb source.txt` where `source.txt` contains, on each line, one integer from 1 to 3,999^13 expressed as an Arabic or Roman numeral.
+`$ ./roman.rb source.txt` where `source.txt` contains, on each line, one integer from 1 to 3,999 expressed as an Arabic or Roman numeral.
 
 ## Understanding the Question
 
